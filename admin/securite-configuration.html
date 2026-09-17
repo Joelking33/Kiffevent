@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sécurité & configuration · KiffEvent Admin</title>
+  <link rel="icon" href="../assets/logos/kiffevent-mark-white.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/admin-security.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <a href="tableau-de-bord.html" class="logo"><img src="../assets/logos/kiffevent-mark-white.svg" alt="">KiffEvent</a>
+    <div class="topbar-left">
+      <div class="topbar-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <circle cx="11" cy="11" r="7" />
+          <path d="m21 21-4.3-4.3" />
+        </svg>
+        <input type="text" id="global-search" placeholder="Rechercher un utilisateur, un événement, une transaction...">
+      </div>
+    </div>
+    <div class="topbar-right">
+      <button class="topbar-icon-btn" aria-label="Notifications"><svg viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 8a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6Z" />
+          <path d="M9.5 20a2.5 2.5 0 0 0 5 0" />
+        </svg><span class="topbar-badge" data-notif-count>0</span></button>
+      <button class="topbar-icon-btn" aria-label="Messages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path
+            d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4 8.9 8.9 0 0 1-3.1-.6L3 21l1.8-5A8.3 8.3 0 0 1 3.5 11 8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5Z" />
+        </svg></button>
+      <div class="topbar-user">
+        <div class="avatar">A</div>
+        <div>
+          <div class="u-name">Admin</div>
+          <div class="u-role">Administrateur</div>
+        </div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </div>
+    </div>
+  </header>
+  <header class="mobile-topbar">
+    <a href="tableau-de-bord.html" class="logo"><img src="../assets/logos/kiffevent-mark-white.svg" alt="">KiffEvent</a>
+    <div class="mobile-topbar-right">
+      <button aria-label="Notifications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 8a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6Z" />
+          <path d="M9.5 20a2.5 2.5 0 0 0 5 0" />
+        </svg></button>
+      <button aria-label="Profil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="m6 9 6 6 6-6" />
+        </svg></button>
+    </div>
+  </header>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <a href="tableau-de-bord.html" class=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 11.5 12 4l9 7.5" />
+            <path d="M5 10v10h14V10" />
+            <path d="M9 20v-6h6v6" />
+          </svg><span>Tableau de bord</span></a><a href="utilisateurs-organisations.html" class=""><svg
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <circle cx="9" cy="8" r="3.2" />
+            <path d="M2.8 19c1.2-3.2 3.6-4.8 6.2-4.8s5 1.6 6.2 4.8" />
+            <circle cx="17" cy="8.5" r="2.4" />
+            <path d="M15.5 14.4c2.2.2 3.8 1.6 4.7 4" />
+          </svg><span>Utilisateurs & organisations</span></a><a href="evenements-contenus.html" class=""><svg
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="16" rx="2" />
+            <path d="M3 10h18M8 3v4M16 3v4" />
+          </svg><span>Événements & contenus</span></a><a href="billets-transactions.html" class=""><svg
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path
+              d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1.5a1.5 1.5 0 0 0 0 3V15a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1.5a1.5 1.5 0 0 0 0-3V9Z" />
+            <path d="M10 7v10" stroke-dasharray="2 2" />
+          </svg><span>Billets & transactions</span></a><a href="finances-rapports.html" class=""><svg
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect x="3" y="6" width="18" height="13" rx="2" />
+            <path d="M3 10h18" />
+            <circle cx="16.5" cy="14" r="1.2" fill="currentColor" stroke="none" />
+          </svg><span>Finances & rapports</span></a><a href="securite-configuration.html" class="active"><svg
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z" />
+          </svg><span>Sécurité & configuration</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <img src="../assets/logos/kiffevent-mark-white.svg" alt="">
+        <div>
+          <div class="sf-title">KiffEvent</div>
+          <div class="sf-sub">Une plateforme, tous événements</div>
+        </div>
+      </div>
+    </aside>
+    <div class="main-content">
+
+      <main class="page-body">
+
+        <div class="stat-grid">
+          <div class="card card-pad stat-card">
+            <div class="stat-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="8" r="3.2" />
+                <path d="M2.8 19c1.2-3.2 3.6-4.8 6.2-4.8s5 1.6 6.2 4.8" />
+                <circle cx="17" cy="8.5" r="2.4" />
+                <path d="M15.5 14.4c2.2.2 3.8 1.6 4.7 4" />
+              </svg></div>
+            <div>
+              <div class="label">Utilisateurs connectés</div>
+              <div class="value">0</div>
+              <div class="delta up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 19V5M5 12l7-7 7 7" />
+                </svg>+0%<span class="vs">vs période précédente</span></div>
+            </div>
+          </div>
+          <div class="card card-pad stat-card">
+            <div class="stat-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z" />
+              </svg></div>
+            <div>
+              <div class="label">Tentatives de connexion</div>
+              <div class="value">0</div>
+              <div class="delta up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 19V5M5 12l7-7 7 7" />
+                </svg>+0%<span class="vs">vs période précédente</span></div>
+            </div>
+          </div>
+          <div class="card card-pad stat-card">
+            <div class="stat-icon blue"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 4.5 21 19H3l9-14.5Z" />
+                <path d="M12 10v4" />
+                <circle cx="12" cy="16.6" r="0.9" fill="currentColor" stroke="none" />
+              </svg></div>
+            <div>
+              <div class="label">Alertes de sécurité</div>
+              <div class="value">0</div>
+              <div class="delta down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 5v14M5 12l7 7 7-7" />
+                </svg>-0%<span class="vs">vs période précédente</span></div>
+            </div>
+          </div>
+          <div class="card card-pad stat-card">
+            <div class="stat-icon blue"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="4.5" y="10" width="15" height="10" rx="2" />
+                <path d="M8 10V7.5a4 4 0 0 1 8 0V10" />
+              </svg></div>
+            <div>
+              <div class="label">Sessions actives</div>
+              <div class="value">0</div>
+              <div class="delta up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 19V5M5 12l7-7 7 7" />
+                </svg>+0%<span class="vs">vs période précédente</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-row">
+          <div class="card card-pad" style="flex:1.6;">
+            <div class="card-title">
+              <h3>Journal d'activité</h3><a href="#" class="see-all">Voir tout ›</a>
+            </div>
+            <div class="table-scroll">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Date & heure</th>
+                      <th>Utilisateur</th>
+                      <th>Action</th>
+                      <th>Détails</th>
+                      <th>IP</th>
+                      <th>Statut</th>
+                    </tr>
+                  </thead>
+                  <tbody id="activity-log-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="card card-pad" style="flex:1;">
+            <div class="card-title">
+              <h3>Connexions récentes</h3><a href="#" class="see-all">Voir tout ›</a>
+            </div>
+            <div id="sessions-list"></div>
+          </div>
+        </div>
+
+        <div class="chart-row">
+          <div class="card card-pad" style="flex:1;">
+            <div class="card-title">
+              <h3>Gestion des utilisateurs</h3><a href="utilisateurs-organisations.html" class="see-all">Voir tout ›</a>
+            </div>
+            <div class="tabs-row" id="sec-user-tabs" style="margin-bottom:12px;">
+              <button class="active" data-t="Tous">Tous (248)</button><button data-t="Client">Clients
+                (210)</button><button data-t="Organisateur">Organisateurs (28)</button><button data-t="Staff">Staff
+                (10)</button>
+            </div>
+            <div class="search-mini" style="margin-bottom:14px;"><svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="7" />
+                <path d="m21 21-4.3-4.3" />
+              </svg><input type="text" placeholder="Rechercher un utilisateur..." id="sec-user-search"></div>
+            <div class="table-scroll">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Utilisateur</th>
+                      <th>Rôle</th>
+                      <th>Statut</th>
+                      <th>Dernière connexion</th>
+                    </tr>
+                  </thead>
+                  <tbody id="sec-users-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="card card-pad" style="flex:1;">
+            <div class="card-title">
+              <h3>Paramètres de la plateforme</h3><a href="#" class="see-all">Voir tout ›</a>
+            </div>
+            <div id="platform-settings"></div>
+          </div>
+          <div class="card card-pad" style="flex:1;">
+            <div class="card-title">
+              <h3>Alertes & sécurité</h3><a href="#" class="see-all">Voir tout ›</a>
+            </div>
+            <div id="security-alerts-list"></div>
+          </div>
+        </div>
+
+        <div class="grid-2col">
+          <div class="col-main"></div>
+          <div class="col-side" style="width:100%;">
+            <div class="card card-pad security-score-card">
+              <div class="card-title">
+                <h3>Niveau de sécurité</h3><span class="badge badge-green">Bon</span>
+              </div>
+              <div class="donut-wrap">
+                <div class="donut-ring" id="security-donut"></div>
+                <div>
+                  <p class="sec-desc">Votre plateforme est bien sécurisée. Quelques améliorations sont possibles.</p>
+                  <ul class="check-list" id="security-checklist"></ul>
+                </div>
+              </div>
+              <button class="btn btn-primary btn-block" style="margin-top:14px;">Voir les détails</button>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+  <nav class="bottom-nav"><a href="tableau-de-bord.html" class=""><svg viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 11.5 12 4l9 7.5" />
+        <path d="M5 10v10h14V10" />
+        <path d="M9 20v-6h6v6" />
+      </svg><span>Accueil</span></a><a href="utilisateurs-organisations.html" class=""><svg viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9" cy="8" r="3.2" />
+        <path d="M2.8 19c1.2-3.2 3.6-4.8 6.2-4.8s5 1.6 6.2 4.8" />
+        <circle cx="17" cy="8.5" r="2.4" />
+        <path d="M15.5 14.4c2.2.2 3.8 1.6 4.7 4" />
+      </svg><span>Utilisateurs</span></a><a href="evenements-contenus.html" class=""><svg viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="5" width="18" height="16" rx="2" />
+        <path d="M3 10h18M8 3v4M16 3v4" />
+      </svg><span>Événements</span></a><a href="finances-rapports.html" class=""><svg viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 20V10M12 20V4M20 20v-7" />
+      </svg><span>Rapports</span></a><a href="securite-configuration.html" class="active"><svg viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 6h18M3 12h18M3 18h18" />
+      </svg><span>Plus</span></a></nav>
+  <script src="js/icons.js"></script>
+  <script src="js/admin-data.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/admin-security.js"></script>
+</body>
+
+</html>

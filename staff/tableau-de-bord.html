@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de bord · KiffEvent Staff</title>
+  <link rel="icon" href="../assets/logos/kiffevent-mark-white.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/staff-dashboard.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <a href="tableau-de-bord.html" class="logo"><img src="../assets/logos/kiffevent-mark-white.svg" alt="">KiffEvent</a>
+    <div class="topbar-left">
+      <div class="topbar-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <circle cx="11" cy="11" r="7" />
+          <path d="m21 21-4.3-4.3" />
+        </svg>
+        <input type="text" id="global-search" placeholder="Rechercher un événement, un participant...">
+      </div>
+    </div>
+    <div class="topbar-right">
+      <button class="topbar-icon-btn" aria-label="Notifications"><svg viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 8a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6Z" />
+          <path d="M9.5 20a2.5 2.5 0 0 0 5 0" />
+        </svg><span class="topbar-badge" data-notif-count>0</span></button>
+      <button class="topbar-icon-btn" aria-label="Messages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path
+            d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4 8.9 8.9 0 0 1-3.1-.6L3 21l1.8-5A8.3 8.3 0 0 1 3.5 11 8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5Z" />
+        </svg></button>
+      <div class="topbar-user">
+        <div class="avatar">BF</div>
+        <div>
+          <div class="u-name">Bamba Fatou</div>
+          <div class="u-role">Staff</div>
+        </div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </div>
+    </div>
+  </header>
+  <header class="mobile-topbar">
+    <a href="tableau-de-bord.html" class="logo"><img src="../assets/logos/kiffevent-mark-white.svg" alt="">KiffEvent</a>
+    <div class="mobile-topbar-right">
+      <button aria-label="Notifications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 8a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6Z" />
+          <path d="M9.5 20a2.5 2.5 0 0 0 5 0" />
+        </svg></button>
+      <button aria-label="Profil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="m6 9 6 6 6-6" />
+        </svg></button>
+    </div>
+  </header>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <a href="tableau-de-bord.html" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 11.5 12 4l9 7.5" />
+            <path d="M5 10v10h14V10" />
+            <path d="M9 20v-6h6v6" />
+          </svg><span>Tableau de bord</span></a><a href="scanner-controle.html" class=""><svg viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7" rx="1" />
+            <rect x="14" y="3" width="7" height="7" rx="1" />
+            <rect x="3" y="14" width="7" height="7" rx="1" />
+            <path d="M14 14h3v3h-3zM19 14h2M14 19h2M19 19h2" />
+          </svg><span>Scanner & contrôle</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <img src="../assets/logos/kiffevent-mark-white.svg" alt="">
+        <div>
+          <div class="sf-title">KiffEvent</div>
+          <div class="sf-sub">Des événements, une seule plateforme</div>
+        </div>
+      </div>
+    </aside>
+    <div class="main-content">
+      <main class="page-body">
+        <div class="stat-grid">
+          <div class="card card-pad stat-card">
+            <div class="stat-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1.5a1.5 1.5 0 0 0 0 3V15a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1.5a1.5 1.5 0 0 0 0-3V9Z" />
+                <path d="M10 7v10" stroke-dasharray="2 2" />
+              </svg></div>
+            <div>
+              <div class="label">Billets attendus</div>
+              <div class="value">0</div>
+              <div class="sub-note">pour cet événement</div>
+            </div>
+          </div>
+          <div class="card card-pad stat-card">
+            <div class="stat-icon green"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="8.5" />
+                <path d="m8.2 12.2 2.6 2.6 5-5.2" />
+              </svg></div>
+            <div>
+              <div class="label">Billets contrôlés</div>
+              <div class="value">0</div>
+              <div class="sub-note">aujourd'hui</div>
+            </div>
+          </div>
+          <div class="card card-pad stat-card">
+            <div class="stat-icon purple"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 3h10M7 21h10" />
+                <path d="M7 3c0 4 5 5.2 5 9s-5 5-5 9" />
+                <path d="M17 3c0 4-5 5.2-5 9s5 5 5 9" />
+              </svg></div>
+            <div>
+              <div class="label">Billets restants</div>
+              <div class="value">0</div>
+              <div class="sub-note">à vérifier</div>
+            </div>
+          </div>
+          <div class="card card-pad stat-card">
+            <div class="stat-icon red"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 4.5 21 19H3l9-14.5Z" />
+                <path d="M12 10v4" />
+                <circle cx="12" cy="16.6" r="0.9" fill="currentColor" stroke="none" />
+              </svg></div>
+            <div>
+              <div class="label">Billets rejetés</div>
+              <div class="value">0</div>
+              <div class="sub-note">déjà refusés</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-row">
+          <div class="col-event" style="flex:1.6;">
+            <div class="card card-pad" style="margin-bottom:20px;">
+              <div class="card-title">
+                <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="3" y="5" width="18" height="16" rx="2" />
+                    <path d="M3 10h18M8 3v4M16 3v4" />
+                  </svg>Événement en cours</h3><a href="#" class="see-all">Voir les détails ›</a>
+              </div>
+              <div class="staff-event-card">
+                <div class="se-thumb" id="staff-event-thumb"></div>
+                <div class="se-body">
+                  <div class="flex-between">
+                    <h4>Festival des Arts</h4><span class="badge badge-green">En cours</span>
+                  </div>
+                  <div class="se-meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="5" width="18" height="16" rx="2" />
+                      <path d="M3 10h18M8 3v4M16 3v4" />
+                    </svg>25 mai 2025 · 14h00 - 22h00</div>
+                  <div class="se-meta"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z" />
+                      <circle cx="12" cy="10" r="2.6" />
+                    </svg>Palais de la Culture, Abidjan</div>
+                  <div class="se-meta"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="8" r="3.4" />
+                      <path d="M4.5 20c1.4-3.6 4.3-5.5 7.5-5.5s6.1 1.9 7.5 5.5" />
+                    </svg>KiffEvent Organisation</div>
+                  <div class="se-progress">
+                    <div class="progress-bg">
+                      <div class="progress-fill" style="width:65%"></div>
+                    </div><span>65%</span>
+                  </div>
+                  <div class="se-note">162 / 248 billets contrôlés</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-pad">
+              <div class="card-title">
+                <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 7v5l3 3" />
+                  </svg>Dernières validations</h3><a href="#" class="see-all">Voir tout ›</a>
+              </div>
+              <div class="table-scroll">
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Participant</th>
+                        <th>Billet</th>
+                        <th>Type</th>
+                        <th>Statut</th>
+                        <th>Heure</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody id="last-validations-body"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-side-staff" style="flex:1;">
+            <div class="card card-pad" style="margin-bottom:18px;">
+              <div class="card-title">
+                <h3>Informations de l'événement</h3>
+              </div>
+              <div class="info-row"><span>Type</span><b>Concert</b></div>
+              <div class="info-row"><span>Catégorie</span><b>Musique</b></div>
+              <div class="info-row"><span>Lieu</span><b>Palais de la Culture, Abidjan</b></div>
+              <div class="info-row"><span>Heure</span><b>14h00 - 22h00</b></div>
+              <div class="info-row"><span>Organisateur</span><b>KiffEvent Organisation</b></div>
+            </div>
+
+            <div class="card card-pad progress-donut-card" style="margin-bottom:18px;">
+              <div class="card-title">
+                <h3>Progression contrôle</h3>
+              </div>
+              <div class="donut-wrap">
+                <div class="donut-ring" id="progress-donut"></div>
+                <div>
+                  <div class="prog-legend-row"><span class="status-dot green"></span>Validés<b>162</b></div>
+                  <div class="prog-legend-row"><span class="status-dot red"></span>Rejetés<b>3</b></div>
+                  <div class="prog-legend-row"><span class="status-dot purple"></span>Restants<b>86</b></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="scan-cta-card">
+              <div class="scan-cta-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7" rx="1" />
+                  <rect x="14" y="3" width="7" height="7" rx="1" />
+                  <rect x="3" y="14" width="7" height="7" rx="1" />
+                  <path d="M14 14h3v3h-3zM19 14h2M14 19h2M19 19h2" />
+                </svg>Scannez les billets rapidement</div>
+              <p>Utilisez le scanner QR pour valider les billets des participants.</p>
+              <a href="scanner-controle.html" class="btn btn-block scan-cta-btn"><svg class="ui-icon"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                  stroke-linejoin="round" aria-hidden="true">
+                  <path
+                    d="M3 8.5A2 2 0 0 1 5 6.5h2L8.5 4h7L17 6.5h2a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8.5Z" />
+                  <circle cx="12" cy="13" r="3.4" />
+                </svg>Ouvrir le scanner</a>
+            </div>
+
+          </div>
+        </div>
+
+      </main>
+
+    </div>
+  </div>
+  <nav class="bottom-nav"><a href="tableau-de-bord.html" class="active"><svg viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 11.5 12 4l9 7.5" />
+        <path d="M5 10v10h14V10" />
+        <path d="M9 20v-6h6v6" />
+      </svg><span>Accueil</span></a><a href="scanner-controle.html" class=""><svg viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7" rx="1" />
+        <rect x="14" y="3" width="7" height="7" rx="1" />
+        <rect x="3" y="14" width="7" height="7" rx="1" />
+        <path d="M14 14h3v3h-3zM19 14h2M14 19h2M19 19h2" />
+      </svg><span>Scanner</span></a></nav>
+  <script src="js/icons.js"></script>
+  <script src="js/admin-data.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/staff-dashboard.js"></script>
+</body>
+
+</html>

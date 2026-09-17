@@ -1,0 +1,163 @@
+@import url("base-admin.css");
+
+.event-mini {
+  display: flex;
+  align-items: center;
+}
+
+.event-mini .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--blue-600);
+  margin-right: 8px;
+}
+
+.ev-sales-row {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.ev-sales-row:last-child {
+  border-bottom: none;
+}
+
+.ev-sales-row .thumb {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background-size: cover;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.ev-sales-row .es-name {
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.ev-sales-row .es-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.ev-sales-row .es-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.ev-sales-row .es-pct {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: var(--blue-700);
+  margin-left: 10px;
+}
+
+.txn-row {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.txn-row:last-child {
+  border-bottom: none;
+}
+
+.txn-row .txn-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.txn-row .txn-label {
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.txn-row .txn-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.txn-row .txn-amount {
+  margin-left: auto;
+  font-weight: 800;
+  font-size: 13px;
+  text-align: right;
+}
+
+.txn-row .txn-amount.pos {
+  color: var(--green);
+}
+
+.txn-row .txn-amount.neg {
+  color: var(--red);
+}
+
+.txn-row .txn-time {
+  font-size: 10px;
+  color: var(--text-faint);
+  display: block;
+}
+
+.quick-actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.quick-actions>*+* {
+  margin-top: 10px;
+}
+
+.quick-actions .btn {
+  justify-content: flex-start;
+}
+
+@media (max-width: 1080px) {
+  .quick-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .quick-actions>*+* {
+    margin-top: 0;
+  }
+
+  .quick-actions .btn {
+    flex: 1 1 180px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .ev-sales-row .thumb {
+    width: 34px;
+    height: 34px;
+  }
+
+  .txn-row .txn-amount {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 430px) {
+  .quick-actions .btn {
+    flex: 1 1 100%;
+  }
+
+  .txn-row .txn-sub {
+    display: none;
+  }
+}

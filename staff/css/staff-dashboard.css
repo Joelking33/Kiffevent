@@ -1,0 +1,284 @@
+@import url("base-admin.css");
+
+.page-head {
+  align-items: center;
+}
+
+.stat-card .sub-note {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.staff-event-card {
+  display: flex;
+}
+
+.staff-event-card .se-thumb {
+  width: 130px;
+  height: 130px;
+  border-radius: 12px;
+  background-size: cover;
+  margin-right: 18px;
+  flex-shrink: 0;
+  background-image: linear-gradient(135deg, #1D4ED8, #7C3AED);
+}
+
+.staff-event-card .se-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.staff-event-card h4 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.se-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.se-meta svg {
+  width: 14px;
+  height: 14px;
+  margin-right: 7px;
+  color: var(--blue-600);
+}
+
+.se-progress {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.se-progress .progress-bg {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.se-progress span {
+  font-weight: 800;
+  font-size: 12.5px;
+}
+
+.se-note {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-row span {
+  color: var(--text-muted);
+}
+
+.progress-donut-card .donut-ring {
+  width: 110px;
+  height: 110px;
+}
+
+.progress-donut-card .donut-wrap>div:last-child {
+  flex: 1;
+  min-width: 0;
+}
+
+.prog-legend-row {
+  display: flex;
+  align-items: center;
+  font-size: 12.5px;
+  padding: 5px 0;
+}
+
+.prog-legend-row b {
+  margin-left: auto;
+  font-weight: 800;
+  padding-left: 10px;
+}
+
+.scan-cta-card {
+  background: linear-gradient(135deg, var(--blue-header-a), var(--blue-header-b));
+  border-radius: var(--radius);
+  padding: 18px;
+  color: white;
+}
+
+.scan-cta-title {
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.scan-cta-title svg {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+}
+
+.scan-cta-card p {
+  font-size: 12px;
+  opacity: 0.9;
+  margin: 0 0 14px;
+}
+
+.scan-cta-btn {
+  background: white;
+  color: var(--blue-700);
+}
+
+.shortcut-row {
+  display: flex;
+  align-items: center;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.shortcut-row:last-child {
+  border-bottom: none;
+}
+
+.shortcut-row svg {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  color: var(--blue-600);
+}
+
+.shortcut-row span {
+  margin-left: auto;
+  color: var(--text-faint);
+}
+
+.help-card {
+  background: var(--blue-50);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-top: 18px;
+}
+
+.help-title {
+  font-weight: 800;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.help-card p {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin: 0 0 12px;
+}
+
+@media (max-width: 1080px) {
+  .page-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .welcome-banner {
+    margin-bottom: 14px;
+  }
+
+  .now-card {
+    align-self: flex-start;
+    text-align: left;
+  }
+
+  .now-card .nc-label {
+    justify-content: flex-start;
+  }
+
+  .col-side-staff {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .scan-cta-card {
+    order: -1;
+    margin-bottom: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .staff-event-card {
+    flex-direction: column;
+  }
+
+  .staff-event-card .se-thumb {
+    width: 100%;
+    height: 150px;
+    margin-right: 0;
+    margin-bottom: 14px;
+  }
+
+  .scan-cta-btn {
+    min-height: 48px;
+  }
+
+  .shortcut-row {
+    padding: 14px 0;
+  }
+
+  .info-row {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 430px) {
+  .staff-event-card .se-thumb {
+    height: 120px;
+  }
+
+  .info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .prog-legend-row {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 860px) {
+
+  .data-table th:nth-child(1),
+  .data-table td:nth-child(1),
+  .data-table th:nth-child(7),
+  .data-table td:nth-child(7) {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+
+  .data-table th:nth-child(4),
+  .data-table td:nth-child(4) {
+    display: none;
+  }
+}
+
+@media (max-width: 430px) {
+
+  .data-table th:nth-child(3),
+  .data-table td:nth-child(3) {
+    display: none;
+  }
+}

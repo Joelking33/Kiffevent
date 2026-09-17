@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>KiffEvent — Espace Organisateur</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sidebar-backdrop" id="backdrop"></div>
+
+<div class="app">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="badge">K</div>
+      <div class="lockup">
+        <div class="name">KiffEvent</div>
+        <div class="role">Organisateur</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button class="nav-link active" data-page="dashboard">
+        <span class="ic">🏠</span> Tableau de bord
+      </button>
+      <button class="nav-link" data-page="events">
+        <span class="ic">🗓️</span> Événements &amp; billetterie
+      </button>
+      <button class="nav-link" data-page="staff">
+        <span class="ic">👥</span> Gestion du staff
+      </button>
+      <button class="nav-link" data-page="payments">
+        <span class="ic">📄</span> Paiements &amp; analyses
+      </button>
+    </nav>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-foot">
+      <button class="nav-link" id="notifSidebarBtn"><span class="ic">🔔</span> Notifications</button>
+      <button class="nav-link"><span class="ic">⚙️</span> Paramètres</button>
+    </div>
+
+    <div class="sidebar-spacer"></div>
+
+    <div class="promo-widget">
+      <div class="thumb">🎪</div>
+      <div class="info">
+        <div class="label">Mon événement</div>
+        <div class="title">Aucun événement actif</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <div class="main">
+    <div class="topbar">
+      <button class="menu-toggle" id="menuToggle">☰</button>
+
+      <div class="topbar-search">
+        🔍 <input type="text" id="topSearch" placeholder="Rechercher un événement, un participant...">
+      </div>
+
+      <div class="topbar-right">
+        <button class="bell-btn" id="bellBtn">🔔<span class="bell-dot"></span></button>
+        <div class="notif-panel" id="notifPanel">
+          <h4>Notifications</h4>
+          <div class="notif-item" style="text-align:center; color:var(--text-muted);">Aucune notification pour le moment</div>
+        </div>
+
+        <div class="user-chip">
+          <div class="user-avatar">KM</div>
+          <div class="user-meta">
+            <div class="name">Kouassi Marcel</div>
+            <div class="role">Organisateur</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ===================== PAGE 1 — TABLEAU DE BORD ===================== -->
+      <section class="page active" data-page="dashboard">
+        <div class="page-head">
+          <div>
+            <h1>Bonjour Marcel 👋</h1>
+            <p>Voici un aperçu de votre activité sur KiffEvent.</p>
+          </div>
+          <div class="date-chip">
+            📅 <span><b id="todayDate">Samedi 24 mai 2025</b>14:32</span>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon blue">🗓️</div>
+            <div class="stat-body">
+              <div class="stat-label">Événements</div>
+              <div class="stat-value">0</div>
+              <div class="stat-delta neutral">+0 ce mois</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green">🎟️</div>
+            <div class="stat-body">
+              <div class="stat-label">Places disponibles</div>
+              <div class="stat-value">0</div>
+              <div class="stat-delta neutral">sur 0</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon purple">🎫</div>
+            <div class="stat-body">
+              <div class="stat-label">Billets vendus</div>
+              <div class="stat-value">0</div>
+              <div class="stat-delta neutral">+0%</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon orange">💰</div>
+            <div class="stat-body">
+              <div class="stat-label">Revenus</div>
+              <div class="stat-value">0 FCFA</div>
+              <div class="stat-delta neutral">+0%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panels-row">
+          <div class="panel">
+            <div class="panel-head">
+              <h2>📈 Évolution des ventes</h2>
+              <select class="panel-select" id="salesRange">
+                <option>7 jours</option>
+                <option>30 jours</option>
+                <option>90 jours</option>
+              </select>
+            </div>
+            <svg class="chart-svg" id="salesChart" viewBox="0 0 560 170" preserveAspectRatio="none"></svg>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head"><h2>💬 Interactions</h2></div>
+            <div class="interactions-list">
+              <div class="interaction-row">
+                <div class="interaction-ic" style="background:#ffe1e1;">❤️</div>
+                <div class="interaction-info"><div class="interaction-label">Likes</div></div>
+                <div style="text-align:right;">
+                  <div class="interaction-value">0</div>
+                  <div class="interaction-delta">+0%</div>
+                </div>
+              </div>
+              <div class="interaction-row">
+                <div class="interaction-ic" style="background:#fff1cf;">⭐</div>
+                <div class="interaction-info"><div class="interaction-label">Avis</div></div>
+                <div style="text-align:right;">
+                  <div class="interaction-value">0</div>
+                  <div class="interaction-delta">+0%</div>
+                </div>
+              </div>
+              <div class="interaction-row">
+                <div class="interaction-ic" style="background:var(--purple-bg);">🧑‍🤝‍🧑</div>
+                <div class="interaction-info"><div class="interaction-label">Sondages</div></div>
+                <div style="text-align:right;">
+                  <div class="interaction-value">0</div>
+                  <div class="interaction-delta">+0%</div>
+                </div>
+              </div>
+              <div class="interaction-row">
+                <div class="interaction-ic" style="background:#ffe1ef;">💗</div>
+                <div class="interaction-info"><div class="interaction-label">Donations</div></div>
+                <div style="text-align:right;">
+                  <div class="interaction-value">0 FCFA</div>
+                  <div class="interaction-delta">+0%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panels-row" style="margin-bottom:0;">
+          <div class="panel">
+            <div class="panel-head"><h2>🎪 Évènement en cours</h2></div>
+            <div class="table-empty" style="text-align:center; padding:30px 10px; color:var(--text-muted);">
+              <span class="icon" style="font-size:24px; display:block; margin-bottom:8px; opacity:0.5;">🎪</span>
+              Aucun évènement en cours pour le moment
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <h2>🧾 Dernières ventes</h2>
+              <span class="link-see-all" data-goto="payments">Voir tout</span>
+            </div>
+            <div class="table-empty" style="text-align:center; padding:30px 10px; color:var(--text-muted);">
+              <span class="icon" style="font-size:24px; display:block; margin-bottom:8px; opacity:0.5;">🧾</span>
+              Aucune vente pour le moment
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== PAGE 2 — ÉVÉNEMENTS & BILLETTERIE ===================== -->
+      <section class="page" data-page="events">
+        <div class="page-head">
+          <div>
+            <h1>Mes événements</h1>
+            <p>Gérez vos événements et leur billetterie.</p>
+          </div>
+          <button class="btn btn-primary" id="openCreateEvent">+ Créer un événement</button>
+        </div>
+
+        <div class="filters-row">
+          <div class="filter-tabs" id="eventFilters">
+            <button class="filter-tab active" data-status="tous">Tous</button>
+            <button class="filter-tab" data-status="publie">Publié</button>
+            <button class="filter-tab" data-status="brouillon">Brouillon</button>
+            <button class="filter-tab" data-status="archive">Archivé</button>
+          </div>
+          <div class="search-inline">
+            🔍 <input type="text" id="eventSearch" placeholder="Rechercher un événement...">
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Visuel</th><th>Nom de l'événement</th><th>Date</th><th>Statut</th><th>Ventes</th><th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="eventsTableBody">
+              </tbody>
+            </table>
+          </div>
+          <div class="table-empty" id="eventsEmpty" style="display:block; text-align:center; padding:40px; color:var(--text-muted);">Aucun événement pour le moment</div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2>🎟️ Types de billets</h2>
+            <button class="btn">Gérer les billets</button>
+          </div>
+          <div class="ticket-types" id="ticketTypesGrid">
+          </div>
+          <div class="table-empty" style="text-align:center; padding:30px 10px; color:var(--text-muted);">
+            <span class="icon" style="font-size:24px; display:block; margin-bottom:8px; opacity:0.5;">🎟️</span>
+            Aucun type de billet configuré
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== PAGE 3 — GESTION DU STAFF ===================== -->
+      <section class="page" data-page="staff">
+        <div class="page-head">
+          <div>
+            <h1>Mon staff</h1>
+            <p>Gérez les membres de votre équipe.</p>
+          </div>
+          <button class="btn btn-primary" id="openAddStaff">+ Ajouter un membre</button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon blue">👥</div>
+            <div class="stat-body">
+              <div class="stat-label">Total membres</div>
+              <div class="stat-value">0</div>
+              <div class="stat-delta neutral">+0 ce mois</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green">✅</div>
+            <div class="stat-body"><div class="stat-label">Actifs</div><div class="stat-value">0</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon orange">📍</div>
+            <div class="stat-body"><div class="stat-label">En pause</div><div class="stat-value">0</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon purple">🚫</div>
+            <div class="stat-body"><div class="stat-label">Désactivés</div><div class="stat-value">0</div></div>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr><th>Membre</th><th>Rôle</th><th>Événements</th><th>Statut</th><th>Actions</th></tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-empty" style="text-align:center; padding:40px; color:var(--text-muted);">
+            <span class="icon" style="font-size:24px; display:block; margin-bottom:8px; opacity:0.5;">👥</span>
+            Aucun membre dans l'équipe pour le moment
+          </div>
+          <div class="pagination" data-pagination="staff">
+            <button class="page-btn">‹</button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">›</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== PAGE 4 — PAIEMENTS & ANALYSES ===================== -->
+      <section class="page" data-page="payments">
+        <div class="page-head">
+          <div>
+            <h1>Paiements &amp; analyses</h1>
+            <p>Suivez vos revenus, vos paiements et analysez vos performances.</p>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <div class="date-chip">📅 25 avr 2025 – 24 mai 2025</div>
+            <button class="btn" id="exportBtn">⭳ Exporter</button>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon blue">💼</div>
+            <div class="stat-body">
+              <div class="stat-label">Revenus totaux</div>
+              <div class="stat-value">0 FCFA</div>
+              <div class="stat-delta neutral">+0%</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green">🤝</div>
+            <div class="stat-body">
+              <div class="stat-label">Commission KiffEvent</div>
+              <div class="stat-value">0 FCFA</div>
+              <div class="stat-delta neutral">(0%)</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon purple">🎫</div>
+            <div class="stat-body">
+              <div class="stat-label">Billets vendus</div>
+              <div class="stat-value">0</div>
+              <div class="stat-delta neutral">+0%</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon orange">↩️</div>
+            <div class="stat-body">
+              <div class="stat-label">Remboursements</div>
+              <div class="stat-value">0 FCFA</div>
+              <div class="stat-delta neutral">+0%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtabs" id="paymentsTabs">
+          <button class="subtab active" data-tab="historique">Historique des paiements</button>
+          <button class="subtab" data-tab="analyses">Analyses</button>
+        </div>
+
+        <div id="paymentsHistorique">
+          <div class="table-card">
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr><th>Date</th><th>Client</th><th>Événement</th><th>Billets</th><th>Montant</th><th>Moyen de paiement</th><th>Statut</th></tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-empty" style="text-align:center; padding:40px; color:var(--text-muted);">
+              <span class="icon" style="font-size:24px; display:block; margin-bottom:8px; opacity:0.5;">💳</span>
+              Aucune transaction pour le moment
+            </div>
+            <div class="pagination">
+              <button class="page-btn">‹</button>
+              <button class="page-btn active">1</button>
+              <button class="page-btn">2</button>
+              <button class="page-btn">3</button>
+              <button class="page-btn">›</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="paymentsAnalyses" style="display:none;">
+          <div class="panel">
+            <div class="panel-head"><h2>📊 Ventes par jour</h2></div>
+            <svg class="chart-svg" id="analysesChart" viewBox="0 0 560 170" preserveAspectRatio="none"></svg>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MOBILE TAB BAR ===================== -->
+<nav class="mobile-tabbar">
+  <div class="row">
+    <button class="mobile-tab active" data-page="dashboard"><span class="ic">🏠</span>Accueil</button>
+    <button class="mobile-tab" data-page="events"><span class="ic">🗓️</span>Événements</button>
+    <button class="mobile-tab" data-page="staff"><span class="ic">👥</span>Staff</button>
+    <button class="mobile-tab" data-page="payments"><span class="ic">📄</span>Paiements</button>
+    <button class="mobile-tab" id="mobilePlus"><span class="ic">⋯</span>Plus</button>
+  </div>
+</nav>
+
+<!-- ===================== MODALS ===================== -->
+<div class="modal-overlay" id="createEventModal">
+  <div class="modal">
+    <h3>Créer un événement</h3>
+    <div class="sub">Renseignez les informations principales de votre événement.</div>
+    <form id="createEventForm">
+      <div class="form-field">
+        <label>Nom de l'événement</label>
+        <input type="text" placeholder="Ex : Nuit Afro-Jazz" required>
+      </div>
+      <div class="form-field">
+        <label>Lieu</label>
+        <input type="text" placeholder="Ex : Palais de la Culture, Abidjan" required>
+      </div>
+      <div class="form-field">
+        <label>Date</label>
+        <input type="date" required>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn" data-close-modal>Annuler</button>
+        <button type="submit" class="btn btn-primary">Créer l'événement</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="addStaffModal">
+  <div class="modal">
+    <h3>Ajouter un membre</h3>
+    <div class="sub">Invitez un nouveau membre à rejoindre votre équipe.</div>
+    <form id="addStaffForm">
+      <div class="form-field">
+        <label>Nom complet</label>
+        <input type="text" placeholder="Ex : Aya N'Guessan" required>
+      </div>
+      <div class="form-field">
+        <label>Rôle</label>
+        <select required>
+          <option value="">Choisir un rôle...</option>
+          <option>Responsable accueil</option>
+          <option>Contrôle des billets</option>
+          <option>Communication</option>
+          <option>Logistique</option>
+          <option>Technique</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Téléphone</label>
+        <input type="tel" placeholder="07 00 00 00 00" required>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn" data-close-modal>Annuler</button>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
