@@ -65,7 +65,8 @@
   });
   backdrop.addEventListener("click", closeSidebar);
 
-  $("#mobilePlus").addEventListener("click", openSidebar);
+  var mobilePlus = $("#mobilePlus");
+  if (mobilePlus) mobilePlus.addEventListener("click", openSidebar);
 
   /* ---------- Notifications ---------- */
   var bellBtn = $("#bellBtn");
@@ -97,11 +98,91 @@
   $("#openCreateEvent").addEventListener("click", function () { openModal("#createEventModal"); });
   $("#openAddStaff").addEventListener("click", function () { openModal("#addStaffModal"); });
 
+  /* ---------- Aperçu d'image (upload) ---------- */
+  function setupImagePreview(inputId, previewId, iconSvg, label) {
+    var input = $(inputId);
+    var preview = $(previewId);
+    if (!input || !preview) return;
+    input.addEventListener("change", function () {
+      var file = input.files && input.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        preview.innerHTML = '<img src="' + e.target.result + '" alt="Aperçu">';
+      };
+      reader.readAsDataURL(file);
+    });
+    preview.resetPreview = function () {
+      input.value = "";
+      preview.innerHTML = iconSvg + '<span>' + label + '</span>';
+    };
+  }
+
+  var eventImageIcon = '<svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="15" rx="2"/><circle cx="9" cy="10.5" r="1.7"/><path d="m5 18 5-5 3.5 3.5L18 12l2 2"/></svg>';
+  var staffImageIcon = '<svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.4"/><path d="M5 20c1.4-3.6 4-5.4 7-5.4s5.6 1.8 7 5.4"/></svg>';
+
+  setupImagePreview("#eventImageInput", "#eventImagePreview", eventImageIcon, "Cliquez pour ajouter une image");
+  setupImagePreview("#staffImageInput", "#staffImagePreview", staffImageIcon, "Ajouter");
+
+  /* ---------- Catégories de billets (création d'évènement) ---------- */
+  var categoryList = $("#categoryList");
+  var categorySuggestions = $("#categorySuggestions");
+  var addCustomCategoryBtn = $("#addCustomCategoryBtn");
+  var categoryRowCount = 0;
+
+  function addCategoryRow(name) {
+    categoryRowCount++;
+    var row = document.createElement("div");
+    row.className = "category-row";
+    row.innerHTML =
+      '<input type="text" class="cat-name" placeholder="Nom de la catégorie" value="' + (name ? name.replace(/"/g, "&quot;") : "") + '" required>' +
+      '<input type="number" class="cat-price" placeholder="Prix (FCFA)" min="0" required>' +
+      '<input type="number" class="cat-places" placeholder="Nb places" min="1" required>' +
+      '<button type="button" class="category-row-remove" title="Supprimer">&times;</button>';
+    categoryList.appendChild(row);
+
+    row.querySelector(".category-row-remove").addEventListener("click", function () {
+      var catName = row.querySelector(".cat-name").value.trim();
+      row.remove();
+      if (catName) {
+        var chip = categorySuggestions.querySelector('[data-cat="' + catName + '"]');
+        if (chip) chip.classList.remove("chip-disabled");
+      }
+    });
+
+    return row;
+  }
+
+  if (categorySuggestions) {
+    $all(".chip", categorySuggestions).forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        if (chip.classList.contains("chip-disabled")) return;
+        addCategoryRow(chip.getAttribute("data-cat"));
+        chip.classList.add("chip-disabled");
+      });
+    });
+  }
+
+  if (addCustomCategoryBtn) {
+    addCustomCategoryBtn.addEventListener("click", function () {
+      addCategoryRow("");
+    });
+  }
+
+  function resetCategoryBuilder() {
+    if (categoryList) categoryList.innerHTML = "";
+    if (categorySuggestions) {
+      $all(".chip", categorySuggestions).forEach(function (chip) { chip.classList.remove("chip-disabled"); });
+    }
+  }
+
   $("#createEventForm").addEventListener("submit", function (e) {
     e.preventDefault();
     this.closest(".modal-overlay").classList.remove("open");
     showToast("Événement créé avec succès (démo)");
     this.reset();
+    resetCategoryBuilder();
+    if ($("#eventImagePreview").resetPreview) $("#eventImagePreview").resetPreview();
   });
 
   $("#addStaffForm").addEventListener("submit", function (e) {
@@ -109,6 +190,7 @@
     this.closest(".modal-overlay").classList.remove("open");
     showToast("Membre ajouté à l'équipe (démo)");
     this.reset();
+    if ($("#staffImagePreview").resetPreview) $("#staffImagePreview").resetPreview();
   });
 
   $("#exportBtn").addEventListener("click", function () {
