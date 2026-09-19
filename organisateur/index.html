@@ -1,386 +1,489 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<title>KiffEvent — Espace Organisateur</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>KiffEvent — Espace Organisateur</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<div class="sidebar-backdrop" id="backdrop"></div>
+  <div class="sidebar-backdrop" id="backdrop"></div>
 
-<div class="app">
+  <div class="app">
 
-  <!-- ===================== SIDEBAR ===================== -->
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-logo">
-      <div class="badge">K</div>
-      <div class="lockup">
-        <div class="name">KiffEvent</div>
-        <div class="role">Organisateur</div>
-      </div>
-    </div>
-
-    <nav class="sidebar-nav">
-      <button class="nav-link active" data-page="dashboard">
-        <span class="ic">🏠</span> Tableau de bord
-      </button>
-      <button class="nav-link" data-page="events">
-        <span class="ic">🗓️</span> Événements &amp; billetterie
-      </button>
-      <button class="nav-link" data-page="staff">
-        <span class="ic">👥</span> Gestion du staff
-      </button>
-      <button class="nav-link" data-page="payments">
-        <span class="ic">📄</span> Paiements &amp; analyses
-      </button>
-    </nav>
-
-    <div class="sidebar-divider"></div>
-
-    <div class="sidebar-foot">
-      <button class="nav-link" id="notifSidebarBtn"><span class="ic">🔔</span> Notifications</button>
-      <button class="nav-link"><span class="ic">⚙️</span> Paramètres</button>
-    </div>
-
-    <div class="sidebar-spacer"></div>
-
-    <div class="promo-widget">
-      <div class="thumb">🎪</div>
-      <div class="info">
-        <div class="label">Mon événement</div>
-        <div class="title">Aucun événement actif</div>
-      </div>
-    </div>
-  </aside>
-
-  <!-- ===================== MAIN ===================== -->
-  <div class="main">
-    <div class="topbar">
-      <button class="menu-toggle" id="menuToggle">☰</button>
-
-      <div class="topbar-search">
-        🔍 <input type="text" id="topSearch" placeholder="Rechercher un événement, un participant...">
-      </div>
-
-      <div class="topbar-right">
-        <button class="bell-btn" id="bellBtn">🔔<span class="bell-dot"></span></button>
-        <div class="notif-panel" id="notifPanel">
-          <h4>Notifications</h4>
-          <div class="notif-item" style="text-align:center; color:var(--text-muted);">Aucune notification pour le moment</div>
-        </div>
-
-        <div class="user-chip">
-          <div class="user-avatar">KM</div>
-          <div class="user-meta">
-            <div class="name">Kouassi Marcel</div>
-            <div class="role">Organisateur</div>
-          </div>
+    <!-- ===================== SIDEBAR ===================== -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <div class="badge">K</div>
+        <div class="lockup">
+          <div class="name">KiffEvent</div>
+          <div class="role">Organisateur</div>
         </div>
       </div>
-    </div>
 
-    <div class="content">
+      <nav class="sidebar-nav">
+        <button class="nav-link active" data-page="dashboard">
+          <span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 11.5 12 4l9 7.5" />
+              <path d="M5 10v10h14V10" />
+              <path d="M9 20v-6h6v6" />
+            </svg></span> Tableau de bord
+        </button>
+        <button class="nav-link" data-page="events">
+          <span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="16" rx="2" />
+              <path d="M3 10h18M8 3v4M16 3v4" />
+            </svg></span> Événements &amp; billetterie
+        </button>
+        <button class="nav-link" data-page="staff">
+          <span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="9" cy="8" r="3.2" />
+              <path d="M2.8 19c1.2-3.2 3.6-4.8 6.2-4.8s5 1.6 6.2 4.8" />
+              <circle cx="17" cy="8.5" r="2.4" />
+              <path d="M15.5 14.4c2.2.2 3.8 1.6 4.7 4" />
+            </svg></span> Gestion du staff
+        </button>
+        <button class="nav-link" data-page="payments">
+          <span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 3h7l4 4v14H7z" />
+              <path d="M14 3v4h4" />
+            </svg></span> Paiements &amp; analyses
+        </button>
+      </nav>
 
-      <!-- ===================== PAGE 1 — TABLEAU DE BORD ===================== -->
-      <section class="page active" data-page="dashboard">
-        <div class="page-head">
-          <div>
-            <h1>Bonjour Marcel 👋</h1>
-            <p>Voici un aperçu de votre activité sur KiffEvent.</p>
-          </div>
-          <div class="date-chip">
-            📅 <span><b id="todayDate">Samedi 24 mai 2025</b>14:32</span>
-          </div>
+      <div class="sidebar-divider"></div>
+
+      <div class="sidebar-foot">
+        <button class="nav-link" id="notifSidebarBtn"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"
+              aria-hidden="true">
+              <path d="M6 8a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6Z" />
+              <path d="M9.5 20a2.5 2.5 0 0 0 5 0" />
+            </svg></span> Notifications</button>
+        <button class="nav-link"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"
+              aria-hidden="true">
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M19.4 13a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8v-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6V19a2 2 0 1 1-4 0v-.2a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.6-1H4a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H10a1.7 1.7 0 0 0 1-1.6V4a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V10a1.7 1.7 0 0 0 1.6 1H20a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.6 1Z" />
+            </svg></span> Paramètres</button>
+      </div>
+
+      <div class="sidebar-spacer"></div>
+
+      <div class="promo-widget">
+        <div class="thumb"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="16" rx="2" />
+            <path d="M3 10h18M8 3v4M16 3v4" />
+          </svg></div>
+        <div class="info">
+          <div class="label">Mon événement</div>
+          <div class="title">Aucun événement actif</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ===================== MAIN ===================== -->
+    <div class="main">
+      <div class="topbar">
+        <button class="menu-toggle" id="menuToggle"><svg class="ic-svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 6h18M3 12h18M3 18h18" />
+          </svg></button>
+
+        <div class="topbar-search">
+          <svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" />
+            <path d="m21 21-4.3-4.3" />
+          </svg> <input type="text" id="topSearch" placeholder="Rechercher un événement, un participant...">
         </div>
 
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-icon blue">🗓️</div>
-            <div class="stat-body">
-              <div class="stat-label">Événements</div>
-              <div class="stat-value">0</div>
-              <div class="stat-delta neutral">+0 ce mois</div>
-            </div>
+        <div class="topbar-right">
+          <button class="bell-btn" id="bellBtn"><svg class="ic-svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"
+              aria-hidden="true">
+              <path d="M6 8a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6Z" />
+              <path d="M9.5 20a2.5 2.5 0 0 0 5 0" />
+            </svg><span class="bell-dot"></span></button>
+          <div class="notif-panel" id="notifPanel">
+            <h4>Notifications</h4>
+            <div class="notif-item" style="text-align:center; color:var(--text-muted);">Aucune notification pour le
+              moment</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-icon green">🎟️</div>
-            <div class="stat-body">
-              <div class="stat-label">Places disponibles</div>
-              <div class="stat-value">0</div>
-              <div class="stat-delta neutral">sur 0</div>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon purple">🎫</div>
-            <div class="stat-body">
-              <div class="stat-label">Billets vendus</div>
-              <div class="stat-value">0</div>
-              <div class="stat-delta neutral">+0%</div>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon orange">💰</div>
-            <div class="stat-body">
-              <div class="stat-label">Revenus</div>
-              <div class="stat-value">0 FCFA</div>
-              <div class="stat-delta neutral">+0%</div>
+
+          <div class="user-chip">
+            <div class="user-avatar">KM</div>
+            <div class="user-meta">
+              <div class="name">Kouassi Marcel</div>
+              <div class="role">Organisateur</div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="panels-row">
-          <div class="panel">
-            <div class="panel-head">
-              <h2>📈 Évolution des ventes</h2>
-              <select class="panel-select" id="salesRange">
-                <option>7 jours</option>
-                <option>30 jours</option>
-                <option>90 jours</option>
-              </select>
+      <div class="content">
+
+        <!-- ===================== PAGE 1 — TABLEAU DE BORD ===================== -->
+        <section class="page active" data-page="dashboard">
+          
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon blue"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="16" rx="2" />
+                  <path d="M3 10h18M8 3v4M16 3v4" />
+                </svg></div>
+              <div class="stat-body">
+                <div class="stat-label">Événements</div>
+                <div class="stat-value">0</div>
+                <div class="stat-delta neutral">+0 ce mois</div>
+              </div>
             </div>
-            <svg class="chart-svg" id="salesChart" viewBox="0 0 560 170" preserveAspectRatio="none"></svg>
+            <div class="stat-card">
+              <div class="stat-icon green"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path
+                    d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1.5a1.5 1.5 0 0 0 0 3V15a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1.5a1.5 1.5 0 0 0 0-3V9Z" />
+                  <path d="M10 7v10" stroke-dasharray="2 2" />
+                </svg></div>
+              <div class="stat-body">
+                <div class="stat-label">Places disponibles</div>
+                <div class="stat-value">0</div>
+                <div class="stat-delta neutral">sur 0</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon purple"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path
+                    d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1.5a1.5 1.5 0 0 0 0 3V15a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1.5a1.5 1.5 0 0 0 0-3V9Z" />
+                  <path d="M10 7v10" stroke-dasharray="2 2" />
+                </svg></div>
+              <div class="stat-body">
+                <div class="stat-label">Billets vendus</div>
+                <div class="stat-value">0</div>
+                <div class="stat-delta neutral">+0%</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon orange"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="6" width="18" height="13" rx="2" />
+                  <path d="M3 10h18" />
+                  <circle cx="16.5" cy="14" r="1.2" fill="currentColor" stroke="none" />
+                </svg></div>
+              <div class="stat-body">
+                <div class="stat-label">Revenus</div>
+                <div class="stat-value">0 FCFA</div>
+                <div class="stat-delta neutral">+0%</div>
+              </div>
+            </div>
           </div>
 
-          <div class="panel">
-            <div class="panel-head"><h2>💬 Interactions</h2></div>
-            <div class="interactions-list">
-              <div class="interaction-row">
-                <div class="interaction-ic" style="background:#ffe1e1;">❤️</div>
-                <div class="interaction-info"><div class="interaction-label">Likes</div></div>
-                <div style="text-align:right;">
-                  <div class="interaction-value">0</div>
-                  <div class="interaction-delta">+0%</div>
+          <div class="panels-row">
+            <div class="panel">
+              <div class="panel-head">
+                <h2><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 18 10 12l3.5 3.5L20 8" />
+                    <path d="M15 8h5v5" />
+                  </svg> Évolution des ventes</h2>
+                <select class="panel-select" id="salesRange">
+                  <option>7 jours</option>
+                  <option>30 jours</option>
+                  <option>90 jours</option>
+                </select>
+              </div>
+              <svg class="chart-svg" id="salesChart" viewBox="0 0 560 170" preserveAspectRatio="none"></svg>
+            </div>
+
+            <div class="panel">
+              <div class="panel-head">
+                <h2><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path
+                      d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4 8.9 8.9 0 0 1-3.1-.6L3 21l1.8-5A8.3 8.3 0 0 1 3.5 11 8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5Z" />
+                  </svg> Interactions</h2>
+              </div>
+              <div class="interactions-list">
+                <div class="interaction-row">
+                  <div class="interaction-ic" style="background:#ffe1e1; color:#e0455c;"><svg class="ic-svg"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                      stroke-linejoin="round" aria-hidden="true">
+                      <path
+                        d="M12 20.3s-7.3-4.4-9.8-9C0.7 7.7 2.4 4.6 5.7 4.1a5 5 0 0 1 6.3 1.9 5 5 0 0 1 6.3-1.9c3.3.5 5 3.6 3.5 7.2-2.5 4.6-9.8 9-9.8 9Z" />
+                    </svg></div>
+                  <div class="interaction-info">
+                    <div class="interaction-label">Likes</div>
+                  </div>
+                  <div style="text-align:right;">
+                    <div class="interaction-value">0</div>
+                    <div class="interaction-delta">+0%</div>
+                  </div>
+                </div>
+                <div class="interaction-row">
+                  <div class="interaction-ic" style="background:#fff1cf; color:#c8790f;"><svg class="ic-svg"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                      stroke-linejoin="round" aria-hidden="true">
+                      <path d="M12 3.4l2.7 5.6 6.1.7-4.5 4.2 1.2 6.1L12 16.9l-5.5 3.1 1.2-6.1-4.5-4.2 6.1-.7L12 3.4Z" />
+                    </svg></div>
+                  <div class="interaction-info">
+                    <div class="interaction-label">Avis</div>
+                  </div>
+                  <div style="text-align:right;">
+                    <div class="interaction-value">0</div>
+                    <div class="interaction-delta">+0%</div>
+                  </div>
+                </div>
+                <div class="interaction-row">
+                  <div class="interaction-ic" style="background:var(--purple-bg); color:var(--purple-text);"><svg
+                      class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="9" cy="8" r="3.2" />
+                      <path d="M2.8 19c1.2-3.2 3.6-4.8 6.2-4.8s5 1.6 6.2 4.8" />
+                      <circle cx="17" cy="8.5" r="2.4" />
+                      <path d="M15.5 14.4c2.2.2 3.8 1.6 4.7 4" />
+                    </svg></div>
+                  <div class="interaction-info">
+                    <div class="interaction-label">Sondages</div>
+                  </div>
+                  <div style="text-align:right;">
+                    <div class="interaction-value">0</div>
+                    <div class="interaction-delta">+0%</div>
+                  </div>
+                </div>
+                <div class="interaction-row">
+                  <div class="interaction-ic" style="background:#ffe1ef; color:#d6337e;"><svg class="ic-svg"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                      stroke-linejoin="round" aria-hidden="true">
+                      <path
+                        d="M12 20.3s-7.3-4.4-9.8-9C0.7 7.7 2.4 4.6 5.7 4.1a5 5 0 0 1 6.3 1.9 5 5 0 0 1 6.3-1.9c3.3.5 5 3.6 3.5 7.2-2.5 4.6-9.8 9-9.8 9Z" />
+                    </svg></div>
+                  <div class="interaction-info">
+                    <div class="interaction-label">Donations</div>
+                  </div>
+                  <div style="text-align:right;">
+                    <div class="interaction-value">0 FCFA</div>
+                    <div class="interaction-delta">+0%</div>
+                  </div>
                 </div>
               </div>
-              <div class="interaction-row">
-                <div class="interaction-ic" style="background:#fff1cf;">⭐</div>
-                <div class="interaction-info"><div class="interaction-label">Avis</div></div>
-                <div style="text-align:right;">
-                  <div class="interaction-value">0</div>
-                  <div class="interaction-delta">+0%</div>
-                </div>
+            </div>
+          </div>
+
+          <div class="panels-row" style="margin-bottom:0;">
+            <div class="panel">
+              <div class="panel-head">
+                <h2><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="5" width="18" height="16" rx="2" />
+                    <path d="M3 10h18M8 3v4M16 3v4" />
+                  </svg> Évènement en cours</h2>
               </div>
-              <div class="interaction-row">
-                <div class="interaction-ic" style="background:var(--purple-bg);">🧑‍🤝‍🧑</div>
-                <div class="interaction-info"><div class="interaction-label">Sondages</div></div>
-                <div style="text-align:right;">
-                  <div class="interaction-value">0</div>
-                  <div class="interaction-delta">+0%</div>
-                </div>
-              </div>
-              <div class="interaction-row">
-                <div class="interaction-ic" style="background:#ffe1ef;">💗</div>
-                <div class="interaction-info"><div class="interaction-label">Donations</div></div>
-                <div style="text-align:right;">
-                  <div class="interaction-value">0 FCFA</div>
-                  <div class="interaction-delta">+0%</div>
-                </div>
+              <div class="table-empty" style="text-align:center; padding:30px 10px; color:var(--text-muted);">
+                <span class="icon" style="font-size:24px; display:block; margin-bottom:8px; opacity:0.5;"><svg
+                    class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="5" width="18" height="16" rx="2" />
+                    <path d="M3 10h18M8 3v4M16 3v4" />
+                  </svg></span>
+                Aucun évènement en cours pour le moment
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="panels-row" style="margin-bottom:0;">
-          <div class="panel">
-            <div class="panel-head"><h2>🎪 Évènement en cours</h2></div>
-            <div class="table-empty" style="text-align:center; padding:30px 10px; color:var(--text-muted);">
-              <span class="icon" style="font-size:24px; display:block; margin-bottom:8px; opacity:0.5;">🎪</span>
-              Aucun évènement en cours pour le moment
+            <div class="panel">
+              <div class="panel-head">
+                <h2><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 3h12v18l-2-1.3L14 21l-2-1.3L10 21l-2-1.3L6 21V3Z" />
+                    <path d="M9 8h6M9 12h6M9 16h4" />
+                  </svg> Dernières ventes</h2>
+                <span class="link-see-all" data-goto="payments">Voir tout</span>
+              </div>
+              <div class="table-empty" style="text-align:center; padding:30px 10px; color:var(--text-muted);">
+                <span class="icon" style="font-size:24px; display:block; margin-bottom:8px; opacity:0.5;"><svg
+                    class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 3h12v18l-2-1.3L14 21l-2-1.3L10 21l-2-1.3L6 21V3Z" />
+                    <path d="M9 8h6M9 12h6M9 16h4" />
+                  </svg></span>
+                Aucune vente pour le moment
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== PAGE 2 — ÉVÉNEMENTS & BILLETTERIE ===================== -->
+        <section class="page" data-page="events">
+          <div class="page-head">
+            <div>
+              <h1>Mes événements</h1>
+              <p>Gérez vos événements et leur billetterie.</p>
+            </div>
+            <button class="btn btn-primary" id="openCreateEvent">+ Créer un événement</button>
+          </div>
+
+          <div class="filters-row">
+            <div class="filter-tabs" id="eventFilters">
+              <button class="filter-tab active" data-status="tous">Tous</button>
+              <button class="filter-tab" data-status="publie">Publié</button>
+              <button class="filter-tab" data-status="brouillon">Brouillon</button>
+              <button class="filter-tab" data-status="archive">Archivé</button>
+            </div>
+            <div class="search-inline">
+              <svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" />
+                <path d="m21 21-4.3-4.3" />
+              </svg> <input type="text" id="eventSearch" placeholder="Rechercher un événement...">
             </div>
           </div>
 
-          <div class="panel">
-            <div class="panel-head">
-              <h2>🧾 Dernières ventes</h2>
-              <span class="link-see-all" data-goto="payments">Voir tout</span>
-            </div>
-            <div class="table-empty" style="text-align:center; padding:30px 10px; color:var(--text-muted);">
-              <span class="icon" style="font-size:24px; display:block; margin-bottom:8px; opacity:0.5;">🧾</span>
-              Aucune vente pour le moment
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===================== PAGE 2 — ÉVÉNEMENTS & BILLETTERIE ===================== -->
-      <section class="page" data-page="events">
-        <div class="page-head">
-          <div>
-            <h1>Mes événements</h1>
-            <p>Gérez vos événements et leur billetterie.</p>
-          </div>
-          <button class="btn btn-primary" id="openCreateEvent">+ Créer un événement</button>
-        </div>
-
-        <div class="filters-row">
-          <div class="filter-tabs" id="eventFilters">
-            <button class="filter-tab active" data-status="tous">Tous</button>
-            <button class="filter-tab" data-status="publie">Publié</button>
-            <button class="filter-tab" data-status="brouillon">Brouillon</button>
-            <button class="filter-tab" data-status="archive">Archivé</button>
-          </div>
-          <div class="search-inline">
-            🔍 <input type="text" id="eventSearch" placeholder="Rechercher un événement...">
-          </div>
-        </div>
-
-        <div class="table-card">
-          <div class="table-scroll">
-            <table>
-              <thead>
-                <tr>
-                  <th>Visuel</th><th>Nom de l'événement</th><th>Date</th><th>Statut</th><th>Ventes</th><th>Actions</th>
-                </tr>
-              </thead>
-              <tbody id="eventsTableBody">
-              </tbody>
-            </table>
-          </div>
-          <div class="table-empty" id="eventsEmpty" style="display:block; text-align:center; padding:40px; color:var(--text-muted);">Aucun événement pour le moment</div>
-        </div>
-
-        <div class="panel">
-          <div class="panel-head">
-            <h2>🎟️ Types de billets</h2>
-            <button class="btn">Gérer les billets</button>
-          </div>
-          <div class="ticket-types" id="ticketTypesGrid">
-          </div>
-          <div class="table-empty" style="text-align:center; padding:30px 10px; color:var(--text-muted);">
-            <span class="icon" style="font-size:24px; display:block; margin-bottom:8px; opacity:0.5;">🎟️</span>
-            Aucun type de billet configuré
-          </div>
-        </div>
-      </section>
-
-      <!-- ===================== PAGE 3 — GESTION DU STAFF ===================== -->
-      <section class="page" data-page="staff">
-        <div class="page-head">
-          <div>
-            <h1>Mon staff</h1>
-            <p>Gérez les membres de votre équipe.</p>
-          </div>
-          <button class="btn btn-primary" id="openAddStaff">+ Ajouter un membre</button>
-        </div>
-
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-icon blue">👥</div>
-            <div class="stat-body">
-              <div class="stat-label">Total membres</div>
-              <div class="stat-value">0</div>
-              <div class="stat-delta neutral">+0 ce mois</div>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon green">✅</div>
-            <div class="stat-body"><div class="stat-label">Actifs</div><div class="stat-value">0</div></div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon orange">📍</div>
-            <div class="stat-body"><div class="stat-label">En pause</div><div class="stat-value">0</div></div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon purple">🚫</div>
-            <div class="stat-body"><div class="stat-label">Désactivés</div><div class="stat-value">0</div></div>
-          </div>
-        </div>
-
-        <div class="table-card">
-          <div class="table-scroll">
-            <table>
-              <thead>
-                <tr><th>Membre</th><th>Rôle</th><th>Événements</th><th>Statut</th><th>Actions</th></tr>
-              </thead>
-              <tbody>
-              </tbody>
-            </table>
-          </div>
-          <div class="table-empty" style="text-align:center; padding:40px; color:var(--text-muted);">
-            <span class="icon" style="font-size:24px; display:block; margin-bottom:8px; opacity:0.5;">👥</span>
-            Aucun membre dans l'équipe pour le moment
-          </div>
-          <div class="pagination" data-pagination="staff">
-            <button class="page-btn">‹</button>
-            <button class="page-btn active">1</button>
-            <button class="page-btn">2</button>
-            <button class="page-btn">3</button>
-            <button class="page-btn">›</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===================== PAGE 4 — PAIEMENTS & ANALYSES ===================== -->
-      <section class="page" data-page="payments">
-        <div class="page-head">
-          <div>
-            <h1>Paiements &amp; analyses</h1>
-            <p>Suivez vos revenus, vos paiements et analysez vos performances.</p>
-          </div>
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <div class="date-chip">📅 25 avr 2025 – 24 mai 2025</div>
-            <button class="btn" id="exportBtn">⭳ Exporter</button>
-          </div>
-        </div>
-
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-icon blue">💼</div>
-            <div class="stat-body">
-              <div class="stat-label">Revenus totaux</div>
-              <div class="stat-value">0 FCFA</div>
-              <div class="stat-delta neutral">+0%</div>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon green">🤝</div>
-            <div class="stat-body">
-              <div class="stat-label">Commission KiffEvent</div>
-              <div class="stat-value">0 FCFA</div>
-              <div class="stat-delta neutral">(0%)</div>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon purple">🎫</div>
-            <div class="stat-body">
-              <div class="stat-label">Billets vendus</div>
-              <div class="stat-value">0</div>
-              <div class="stat-delta neutral">+0%</div>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon orange">↩️</div>
-            <div class="stat-body">
-              <div class="stat-label">Remboursements</div>
-              <div class="stat-value">0 FCFA</div>
-              <div class="stat-delta neutral">+0%</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="subtabs" id="paymentsTabs">
-          <button class="subtab active" data-tab="historique">Historique des paiements</button>
-          <button class="subtab" data-tab="analyses">Analyses</button>
-        </div>
-
-        <div id="paymentsHistorique">
           <div class="table-card">
             <div class="table-scroll">
               <table>
                 <thead>
-                  <tr><th>Date</th><th>Client</th><th>Événement</th><th>Billets</th><th>Montant</th><th>Moyen de paiement</th><th>Statut</th></tr>
+                  <tr>
+                    <th>Visuel</th>
+                    <th>Nom de l'événement</th>
+                    <th>Date</th>
+                    <th>Statut</th>
+                    <th>Ventes</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="eventsTableBody">
+                </tbody>
+              </table>
+            </div>
+            <div class="table-empty" id="eventsEmpty"
+              style="display:block; text-align:center; padding:40px; color:var(--text-muted);">Aucun événement pour le
+              moment</div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <h2><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path
+                    d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1.5a1.5 1.5 0 0 0 0 3V15a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1.5a1.5 1.5 0 0 0 0-3V9Z" />
+                  <path d="M10 7v10" stroke-dasharray="2 2" />
+                </svg> Types de billets</h2>
+              <button class="btn">Gérer les billets</button>
+            </div>
+            <div class="ticket-types" id="ticketTypesGrid">
+            </div>
+            <div class="table-empty" style="text-align:center; padding:30px 10px; color:var(--text-muted);">
+              <span class="icon" style="font-size:24px; display:block; margin-bottom:8px; opacity:0.5;"><svg
+                  class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path
+                    d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1.5a1.5 1.5 0 0 0 0 3V15a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1.5a1.5 1.5 0 0 0 0-3V9Z" />
+                  <path d="M10 7v10" stroke-dasharray="2 2" />
+                </svg></span>
+              Aucun type de billet configuré
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== PAGE 3 — GESTION DU STAFF ===================== -->
+        <section class="page" data-page="staff">
+          <div class="page-head">
+            <div>
+              <h1>Mon staff</h1>
+              <p>Gérez les membres de votre équipe.</p>
+            </div>
+            <button class="btn btn-primary" id="openAddStaff">+ Ajouter un membre</button>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon blue"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="9" cy="8" r="3.2" />
+                  <path d="M2.8 19c1.2-3.2 3.6-4.8 6.2-4.8s5 1.6 6.2 4.8" />
+                  <circle cx="17" cy="8.5" r="2.4" />
+                  <path d="M15.5 14.4c2.2.2 3.8 1.6 4.7 4" />
+                </svg></div>
+              <div class="stat-body">
+                <div class="stat-label">Total membres</div>
+                <div class="stat-value">0</div>
+                <div class="stat-delta neutral">+0 ce mois</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon green"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8.5" />
+                  <path d="m8.2 12.2 2.6 2.6 5-5.2" />
+                </svg></div>
+              <div class="stat-body">
+                <div class="stat-label">Actifs</div>
+                <div class="stat-value">0</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon orange"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="6" y="4" width="4" height="16" rx="1" />
+                  <rect x="14" y="4" width="4" height="16" rx="1" />
+                </svg></div>
+              <div class="stat-body">
+                <div class="stat-label">En pause</div>
+                <div class="stat-value">0</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon purple"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8.5" />
+                  <path d="m6.5 6.5 11 11" />
+                </svg></div>
+              <div class="stat-body">
+                <div class="stat-label">Désactivés</div>
+                <div class="stat-value">0</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-card">
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Membre</th>
+                    <th>Rôle</th>
+                    <th>Événements</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                  </tr>
                 </thead>
                 <tbody>
                 </tbody>
               </table>
             </div>
             <div class="table-empty" style="text-align:center; padding:40px; color:var(--text-muted);">
-              <span class="icon" style="font-size:24px; display:block; margin-bottom:8px; opacity:0.5;">💳</span>
-              Aucune transaction pour le moment
+              <span class="icon" style="font-size:24px; display:block; margin-bottom:8px; opacity:0.5;"><svg
+                  class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="9" cy="8" r="3.2" />
+                  <path d="M2.8 19c1.2-3.2 3.6-4.8 6.2-4.8s5 1.6 6.2 4.8" />
+                  <circle cx="17" cy="8.5" r="2.4" />
+                  <path d="M15.5 14.4c2.2.2 3.8 1.6 4.7 4" />
+                </svg></span>
+              Aucun membre dans l'équipe pour le moment
             </div>
-            <div class="pagination">
+            <div class="pagination" data-pagination="staff">
               <button class="page-btn">‹</button>
               <button class="page-btn active">1</button>
               <button class="page-btn">2</button>
@@ -388,91 +491,237 @@
               <button class="page-btn">›</button>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div id="paymentsAnalyses" style="display:none;">
-          <div class="panel">
-            <div class="panel-head"><h2>📊 Ventes par jour</h2></div>
-            <svg class="chart-svg" id="analysesChart" viewBox="0 0 560 170" preserveAspectRatio="none"></svg>
+        <!-- ===================== PAGE 4 — PAIEMENTS & ANALYSES ===================== -->
+        <section class="page" data-page="payments">
+          <div class="page-head">
+            <div>
+              <h1>Paiements &amp; analyses</h1>
+              <p>Suivez vos revenus, vos paiements et analysez vos performances.</p>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <div class="date-chip"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="16" rx="2" />
+                  <path d="M3 10h18M8 3v4M16 3v4" />
+                </svg> 25 avr 2025 – 24 mai 2025</div>
+              <button class="btn" id="exportBtn"><svg class="ic-svg" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"
+                  aria-hidden="true">
+                  <path d="M12 3v12" />
+                  <path d="m7.5 10.5 4.5 4.5 4.5-4.5" />
+                  <path d="M4 20h16" />
+                </svg> Exporter</button>
+            </div>
           </div>
-        </div>
-      </section>
 
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon blue"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="7" width="18" height="13" rx="2" />
+                  <path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7" />
+                  <path d="M3 12h18" />
+                </svg></div>
+              <div class="stat-body">
+                <div class="stat-label">Revenus totaux</div>
+                <div class="stat-value">0 FCFA</div>
+                <div class="stat-delta neutral">+0%</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon green"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="7" cy="7" r="2.2" />
+                  <circle cx="17" cy="17" r="2.2" />
+                  <path d="M18 6 6 18" />
+                </svg></div>
+              <div class="stat-body">
+                <div class="stat-label">Commission KiffEvent</div>
+                <div class="stat-value">0 FCFA</div>
+                <div class="stat-delta neutral">(0%)</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon purple"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path
+                    d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1.5a1.5 1.5 0 0 0 0 3V15a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1.5a1.5 1.5 0 0 0 0-3V9Z" />
+                  <path d="M10 7v10" stroke-dasharray="2 2" />
+                </svg></div>
+              <div class="stat-body">
+                <div class="stat-label">Billets vendus</div>
+                <div class="stat-value">0</div>
+                <div class="stat-delta neutral">+0%</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon orange"><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 9h11a5 5 0 0 1 0 10H9" />
+                  <path d="M8 5 4 9l4 4" />
+                </svg></div>
+              <div class="stat-body">
+                <div class="stat-label">Remboursements</div>
+                <div class="stat-value">0 FCFA</div>
+                <div class="stat-delta neutral">+0%</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="subtabs" id="paymentsTabs">
+            <button class="subtab active" data-tab="historique">Historique des paiements</button>
+            <button class="subtab" data-tab="analyses">Analyses</button>
+          </div>
+
+          <div id="paymentsHistorique">
+            <div class="table-card">
+              <div class="table-scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Client</th>
+                      <th>Événement</th>
+                      <th>Billets</th>
+                      <th>Montant</th>
+                      <th>Moyen de paiement</th>
+                      <th>Statut</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-empty" style="text-align:center; padding:40px; color:var(--text-muted);">
+                <span class="icon" style="font-size:24px; display:block; margin-bottom:8px; opacity:0.5;"><svg
+                    class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="2.5" y="5" width="19" height="14" rx="2.5" />
+                    <path d="M2.5 10h19" />
+                  </svg></span>
+                Aucune transaction pour le moment
+              </div>
+              <div class="pagination">
+                <button class="page-btn">‹</button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">›</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="paymentsAnalyses" style="display:none;">
+            <div class="panel">
+              <div class="panel-head">
+                <h2><svg class="ic-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 20V10M12 20V4M20 20v-7" />
+                  </svg> Ventes par jour</h2>
+              </div>
+              <svg class="chart-svg" id="analysesChart" viewBox="0 0 560 170" preserveAspectRatio="none"></svg>
+            </div>
+          </div>
+        </section>
+
+      </div>
     </div>
   </div>
-</div>
 
-<!-- ===================== MOBILE TAB BAR ===================== -->
-<nav class="mobile-tabbar">
-  <div class="row">
-    <button class="mobile-tab active" data-page="dashboard"><span class="ic">🏠</span>Accueil</button>
-    <button class="mobile-tab" data-page="events"><span class="ic">🗓️</span>Événements</button>
-    <button class="mobile-tab" data-page="staff"><span class="ic">👥</span>Staff</button>
-    <button class="mobile-tab" data-page="payments"><span class="ic">📄</span>Paiements</button>
-    <button class="mobile-tab" id="mobilePlus"><span class="ic">⋯</span>Plus</button>
+  <!-- ===================== MOBILE TAB BAR ===================== -->
+  <nav class="mobile-tabbar">
+    <div class="row">
+      <button class="mobile-tab active" data-page="dashboard"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"
+            aria-hidden="true">
+            <path d="M3 11.5 12 4l9 7.5" />
+            <path d="M5 10v10h14V10" />
+            <path d="M9 20v-6h6v6" />
+          </svg></span>Accueil</button>
+      <button class="mobile-tab" data-page="events"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="16" rx="2" />
+            <path d="M3 10h18M8 3v4M16 3v4" />
+          </svg></span>Événements</button>
+      <button class="mobile-tab" data-page="staff"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="9" cy="8" r="3.2" />
+            <path d="M2.8 19c1.2-3.2 3.6-4.8 6.2-4.8s5 1.6 6.2 4.8" />
+            <circle cx="17" cy="8.5" r="2.4" />
+            <path d="M15.5 14.4c2.2.2 3.8 1.6 4.7 4" />
+          </svg></span>Staff</button>
+      <button class="mobile-tab" data-page="payments"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"
+            aria-hidden="true">
+            <path d="M7 3h7l4 4v14H7z" />
+            <path d="M14 3v4h4" />
+          </svg></span>Paiements</button>
+    </div>
+  </nav>
+
+  <!-- ===================== MODALS ===================== -->
+  <div class="modal-overlay" id="createEventModal">
+    <div class="modal">
+      <h3>Créer un événement</h3>
+      <div class="sub">Renseignez les informations principales de votre événement.</div>
+      <form id="createEventForm">
+        <div class="form-field">
+          <label>Nom de l'événement</label>
+          <input type="text" placeholder="Ex : Nuit Afro-Jazz" required>
+        </div>
+        <div class="form-field">
+          <label>Lieu</label>
+          <input type="text" placeholder="Ex : Palais de la Culture, Abidjan" required>
+        </div>
+        <div class="form-field">
+          <label>Date</label>
+          <input type="date" required>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn" data-close-modal>Annuler</button>
+          <button type="submit" class="btn btn-primary">Créer l'événement</button>
+        </div>
+      </form>
+    </div>
   </div>
-</nav>
 
-<!-- ===================== MODALS ===================== -->
-<div class="modal-overlay" id="createEventModal">
-  <div class="modal">
-    <h3>Créer un événement</h3>
-    <div class="sub">Renseignez les informations principales de votre événement.</div>
-    <form id="createEventForm">
-      <div class="form-field">
-        <label>Nom de l'événement</label>
-        <input type="text" placeholder="Ex : Nuit Afro-Jazz" required>
-      </div>
-      <div class="form-field">
-        <label>Lieu</label>
-        <input type="text" placeholder="Ex : Palais de la Culture, Abidjan" required>
-      </div>
-      <div class="form-field">
-        <label>Date</label>
-        <input type="date" required>
-      </div>
-      <div class="modal-actions">
-        <button type="button" class="btn" data-close-modal>Annuler</button>
-        <button type="submit" class="btn btn-primary">Créer l'événement</button>
-      </div>
-    </form>
+  <div class="modal-overlay" id="addStaffModal">
+    <div class="modal">
+      <h3>Ajouter un membre</h3>
+      <div class="sub">Invitez un nouveau membre à rejoindre votre équipe.</div>
+      <form id="addStaffForm">
+        <div class="form-field">
+          <label>Nom complet</label>
+          <input type="text" placeholder="Ex : Aya N'Guessan" required>
+        </div>
+        <div class="form-field">
+          <label>Rôle</label>
+          <select required>
+            <option value="">Choisir un rôle...</option>
+            <option>Responsable accueil</option>
+            <option>Contrôle des billets</option>
+            <option>Communication</option>
+            <option>Logistique</option>
+            <option>Technique</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Téléphone</label>
+          <input type="tel" placeholder="07 00 00 00 00" required>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn" data-close-modal>Annuler</button>
+          <button type="submit" class="btn btn-primary">Ajouter</button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 
-<div class="modal-overlay" id="addStaffModal">
-  <div class="modal">
-    <h3>Ajouter un membre</h3>
-    <div class="sub">Invitez un nouveau membre à rejoindre votre équipe.</div>
-    <form id="addStaffForm">
-      <div class="form-field">
-        <label>Nom complet</label>
-        <input type="text" placeholder="Ex : Aya N'Guessan" required>
-      </div>
-      <div class="form-field">
-        <label>Rôle</label>
-        <select required>
-          <option value="">Choisir un rôle...</option>
-          <option>Responsable accueil</option>
-          <option>Contrôle des billets</option>
-          <option>Communication</option>
-          <option>Logistique</option>
-          <option>Technique</option>
-        </select>
-      </div>
-      <div class="form-field">
-        <label>Téléphone</label>
-        <input type="tel" placeholder="07 00 00 00 00" required>
-      </div>
-      <div class="modal-actions">
-        <button type="button" class="btn" data-close-modal>Annuler</button>
-        <button type="submit" class="btn btn-primary">Ajouter</button>
-      </div>
-    </form>
-  </div>
-</div>
+  <div class="toast" id="toast"></div>
 
-<div class="toast" id="toast"></div>
-
-<script src="script.js"></script>
+  <script src="js/script.js"></script>
 </body>
+
 </html>

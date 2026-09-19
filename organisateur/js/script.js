@@ -100,19 +100,19 @@
   $("#createEventForm").addEventListener("submit", function (e) {
     e.preventDefault();
     this.closest(".modal-overlay").classList.remove("open");
-    showToast("✅ Événement créé avec succès (démo)");
+    showToast("Événement créé avec succès (démo)");
     this.reset();
   });
 
   $("#addStaffForm").addEventListener("submit", function (e) {
     e.preventDefault();
     this.closest(".modal-overlay").classList.remove("open");
-    showToast("✅ Membre ajouté à l'équipe (démo)");
+    showToast("Membre ajouté à l'équipe (démo)");
     this.reset();
   });
 
   $("#exportBtn").addEventListener("click", function () {
-    showToast("⭳ Export généré (démo)");
+    showToast("Export généré (démo)");
   });
 
   /* ---------- Filtres & recherche : Événements ---------- */
